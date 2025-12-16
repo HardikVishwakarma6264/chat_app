@@ -77,11 +77,7 @@ const mailSender = async (email, title, body) => {
           name: "Samvaad",
           email: "hardikvishwakarma49@gmail.com",
         },
-        to: [
-          {
-            email: email,
-          },
-        ],
+        to: [{ email }],
         subject: title,
         htmlContent: body,
       },
@@ -90,21 +86,19 @@ const mailSender = async (email, title, body) => {
           "api-key": process.env.BREVO_API_KEY,
           "Content-Type": "application/json",
         },
-        timeout: 10000,
+        timeout: 15000,
       }
     );
 
-    console.log("✅ Email sent successfully:", response.data);
+    console.log("✅ Email sent:", response.data);
     return response.data;
-
   } catch (error) {
-    console.error(
-      "❌ Email send failed:",
-      error.response?.data || error.message
-    );
+    console.error("❌ Email error:", error.response?.data || error.message);
     return null;
   }
 };
 
 module.exports = mailSender;
+
+
 
