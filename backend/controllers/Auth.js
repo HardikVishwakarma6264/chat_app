@@ -56,65 +56,11 @@ exports.googleLogin = async (req, res) => {
   }
 };
 
-// exports.sendotp = async (req, res) => {
-//   try {
-//     const { email } = req.body;
-
-//     // check if user already exists
-//     const checkUserPresent = await User.findOne({ email });
-//     if (checkUserPresent) {
-//       return res.status(409).json({
-//         success: false,
-//         message: "User already registered",
-//       });
-//     }
-
-//     // generate OTP
-//     let otp = otpGenerator.generate(6, {
-//       upperCaseAlphabets: false,
-//       lowerCaseAlphabets: false,
-//       specialChars: false,
-//     });
-//     // console.log("OTP GENERATED ->", otp);
-
-//     // check uniqueness
-//     let result = await OTP.findOne({ otp });
-//     while (result) {
-//       otp = otpGenerator.generate(6, {
-//         upperCaseAlphabets: false,
-//         lowerCaseAlphabets: false,
-//         specialChars: false,
-//       });
-//       result = await OTP.findOne({ otp });
-//     }
-
-//     // save otp
-//     const otpPayload = { email, otp };
-//     const otpBody = await OTP.create(otpPayload);
-//     console.log("OTP Saved:", otpBody);
-
-//     const { title, body } = otpMailTemplate(otp);
-//     await mailSender(email, title, body);
-
-//     // send response
-//     res.status(200).json({
-//       success: true,
-//       message: "OTP sent successfully",
-//       otp: otp,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return res.status(500).json({
-//       success: false,
-//       message: "Something went wrong",
-//     });
-//   }
-// };
-
 exports.sendotp = async (req, res) => {
   try {
     const { email } = req.body;
 
+    // check if user already exists
     const checkUserPresent = await User.findOne({ email });
     if (checkUserPresent) {
       return res.status(409).json({
@@ -123,12 +69,15 @@ exports.sendotp = async (req, res) => {
       });
     }
 
+    // generate OTP
     let otp = otpGenerator.generate(6, {
       upperCaseAlphabets: false,
       lowerCaseAlphabets: false,
       specialChars: false,
     });
+    // console.log("OTP GENERATED ->", otp);
 
+    // check uniqueness
     let result = await OTP.findOne({ otp });
     while (result) {
       otp = otpGenerator.generate(6, {
@@ -139,32 +88,28 @@ exports.sendotp = async (req, res) => {
       result = await OTP.findOne({ otp });
     }
 
-    await OTP.create({ email, otp });
+    // save otp
+    const otpPayload = { email, otp };
+    const otpBody = await OTP.create(otpPayload);
+    console.log("OTP Saved:", otpBody);
 
     const { title, body } = otpMailTemplate(otp);
-    const emailResponse = await mailSender(email, title, body);
+    await mailSender(email, title, body);
 
-    if (!emailResponse) {
-      return res.status(500).json({
-        success: false,
-        message: "OTP email could not be sent. Try again later.",
-      });
-    }
-
-    return res.status(200).json({
+    // send response
+    res.status(200).json({
       success: true,
       message: "OTP sent successfully",
+      otp: otp,
     });
-
   } catch (error) {
-    console.error("Send OTP Error:", error);
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: "Something went wrong",
     });
   }
 };
-
 
 exports.signup = async (req, res) => {
   try {
