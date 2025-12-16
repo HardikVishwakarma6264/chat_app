@@ -6,7 +6,9 @@ const userSocketMap = {}; // { userId: socketId }
 function initSocket(server) {
   io = new Server(server, {
     cors: {
-      origin: "http://localhost:3000",
+      origin: ["http://localhost:3000",
+        "https://chat-app-zeta-nine-23.vercel.app"
+      ],
       methods: ["GET", "POST"],
       credentials: true,
     },
