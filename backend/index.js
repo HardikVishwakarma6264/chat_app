@@ -36,6 +36,8 @@ app.use(
     origin: [
       "https://chatapp-flax-psi-32.vercel.app",
       "https://chat-app-git-main-hardik-vishwakarmas-projects.vercel.app",
+      "https://chat.hardikvish.me",
+
       "http://localhost:3000"
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
