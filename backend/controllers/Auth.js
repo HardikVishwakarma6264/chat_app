@@ -9,52 +9,7 @@ const Profile = require("../models/Profile");
 const otpMailTemplate = require("../mail/loginotp");
 const { uploadToCloudinary } = require("../utils/imageuploder");
 
-exports.googleLogin = async (req, res) => {
-  try {
-    const { name, email, image } = req.body;
 
-    let user = await User.findOne({ email }).populate("additionaldetail");
-
-    if (!user) {
-      const profiledetail = await Profile.create({
-        gender: null,
-        username:
-          name.replace(" ", "_") + "_" + Math.floor(Math.random() * 10000),
-        about: null,
-        contactnumber: null,
-      });
-
-      user = await User.create({
-        firstname: name.split(" ")[0],
-        lastname: name.split(" ")[1] || "",
-        email,
-        password: "GOOGLE_AUTH",
-        image,
-        additionaldetail: profiledetail._id,
-      });
-    }
-
-    const token = jwt.sign(
-      { id: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      { expiresIn: "2d" }
-    );
-
-    user.password = undefined;
-
-    return res.status(200).json({
-      success: true,
-      token,
-      user,
-    });
-  } catch (error) {
-    console.error("Google Login Error:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Google Login Failed",
-    });
-  }
-};
 
 exports.sendotp = async (req, res) => {
   try {
@@ -94,7 +49,15 @@ exports.sendotp = async (req, res) => {
     console.log("OTP Saved:", otpBody);
 
     const { title, body } = otpMailTemplate(otp);
-    await mailSender(email, title, body);
+    const mailResponse=await mailSender(email, title, body);
+
+    if (!mailResponse) {
+  return res.status(500).json({
+    success: false,
+    message: "Failed to send OTP email. Please try again.",
+  });
+}
+
 
     // send response
     res.status(200).json({
@@ -509,6 +472,54 @@ exports.deleteAccount = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to delete account",
+    });
+  }
+};
+
+
+exports.googleLogin = async (req, res) => {
+  try {
+    const { name, email, image } = req.body;
+
+    let user = await User.findOne({ email }).populate("additionaldetail");
+
+    if (!user) {
+      const profiledetail = await Profile.create({
+        gender: null,
+        username:
+          name.replace(" ", "_") + "_" + Math.floor(Math.random() * 10000),
+        about: null,
+        contactnumber: null,
+      });
+
+      user = await User.create({
+        firstname: name.split(" ")[0],
+        lastname: name.split(" ")[1] || "",
+        email,
+        password: "GOOGLE_AUTH",
+        image,
+        additionaldetail: profiledetail._id,
+      });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "2d" }
+    );
+
+    user.password = undefined;
+
+    return res.status(200).json({
+      success: true,
+      token,
+      user,
+    });
+  } catch (error) {
+    console.error("Google Login Error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Google Login Failed",
     });
   }
 };

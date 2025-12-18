@@ -17,18 +17,18 @@ const otpschema = new moongose.Schema({
   },
 });
 
-async function sendverificationemail(email, otp) {
-  try {
-    const mailresponse = await mailsender(
-      email,
-      "Verifiaction Email for Login",
-      otp
-    );
-    console.log("email send successfully", mailresponse);
-  } catch (error) {
-    console.log("error accured while sending mail", error);
-    throw error;
-  }
-}
+// async function sendverificationemail(email, otp) {
+//   try {
+//     const mailresponse = await mailsender(
+//       email,
+//       "Verifiaction Email for Login",
+//       otp
+//     );
+//     console.log("email send successfully", mailresponse);
+//   } catch (error) {
+//     console.log("error accured while sending mail", error);
+//     throw error;
+//   }
+// }
 
 module.exports = moongose.model("OTP", otpschema);
