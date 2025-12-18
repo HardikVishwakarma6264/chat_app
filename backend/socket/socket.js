@@ -13,19 +13,18 @@ function initSocket(server) {
   //   pingTimeout: 60000,
   // });
 
-  const allowedOrigins = [
-  "http://localhost:3000",
- "https://chatapp-flax-psi-32.vercel.app"
-];
-
-io = new Server(server, {
+  io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: [
+      "http://localhost:3000",
+      "https://chatapp-flax-psi-32.vercel.app",
+    ],
     methods: ["GET", "POST"],
     credentials: true,
   },
   pingTimeout: 60000,
 });
+
 
 
   io.on("connection", (socket) => {
