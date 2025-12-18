@@ -682,9 +682,9 @@ function Home() {
 
       {/* Top Bar */}
       <div
-        className="flex-none w-full h-11 md:h-16 flex items-center justify-between
-    bg-gray-100 text-black
-    dark:bg-[#1d1c1c] dark:text-white
+        className="flex-none w-full h-11 md:h-16 flex items-center justify-between bg:gray-100
+    md:bg-gray-100 text-black dark:bg-black
+    md:dark:bg-[#1d1c1c] dark:text-white
     transition-colors duration-300 "
       >
         <div className="flex items-center gap-0 ">
