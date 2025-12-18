@@ -51,7 +51,21 @@ const LeftNavBar = ({
   return (
     <>
       {/* Left NavBar */}
-      <div className="flex flex-col h-full justify-between bg-gray-100 dark:bg-[#1d1c1c]  z-50">
+      {/* <div className="flex flex-col h-full justify-between bg-gray-100 dark:bg-[#1d1c1c]  z-50"> */}
+      <div
+  className="
+    fixed md:relative
+    left-0
+    top-0 md:top-auto
+    h-[100dvh] md:h-full
+    w-14
+    flex flex-col justify-between
+    bg-gray-100 dark:bg-[#1d1c1c]
+    z-50
+  "
+>
+
+
         {/* 🔹 Top Section */}
         <div className="">
           {/* <NavItem Icon={MenuIcon} onClick={handleMenuClick} /> */}

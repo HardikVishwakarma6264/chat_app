@@ -155,8 +155,12 @@ const Sidebar = ({
   const inputRef = useRef(null);
 
   useEffect(() => {
+  // Sirf laptop / desktop par autofocus
+  if (window.innerWidth > 768) {
     inputRef.current?.focus();
-  }, []);
+  }
+}, []);
+
 
   useEffect(() => {
     const hasSeenThreeDot = localStorage.getItem("seenThreeDotHint");
@@ -342,7 +346,7 @@ const Sidebar = ({
   }
 
   return (
-    <div className="relative h-full flex flex-col shadow-xl ">
+    <div className="relative h-full flex overflow-hidden flex-col shadow-xl ">
       {/* FIRST TIME POPUP */}
       {firstTimePopup && (
         <div className="absolute bottom-24 right-4 bg-white text-black p-4 rounded-lg shadow-xl w-52  z-50">
@@ -385,7 +389,7 @@ const Sidebar = ({
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between p-3    min-h-[55px]">
+      {/* <div className="flex items-center justify-between p-3    min-h-[55px]">
         <h2 className="text-2xl font-semibold ">Chats</h2>
 
         <MoreVertical
@@ -402,7 +406,21 @@ const Sidebar = ({
             }
           }}
         />
-      </div>
+      </div> */}
+
+      {/* HEADER — ONLY DESKTOP */}
+{!isMobile && (
+  <div className="flex items-center justify-between p-3 min-h-[55px]">
+    <h2 className="text-2xl font-semibold">Chats</h2>
+
+    <MoreVertical
+      size={20}
+      className="cursor-pointer hover:scale-105 transition-transform"
+      onClick={() => setShowPopup(true)}
+    />
+  </div>
+)}
+
 
       {/* Search */}
       <div className="relative">
@@ -453,7 +471,7 @@ const Sidebar = ({
       </div>
 
       {/* Chat List */}
-      <div className="overflow-y-auto flex-1 ">
+      <div className="overflow-y-auto flex-1 overscroll-none ">
         {filteredChats.length > 0 ? (
           filteredChats.map((c) => {
             const isMatch =

@@ -28,7 +28,7 @@ import {
 } from "../services/operation/authapi";
 import { io } from "socket.io-client";
 import loo from "../images/logo-removebg-preview.png";
-import { Bell } from "lucide-react";
+import { Bell,MoreVertical } from "lucide-react";
 import ArchivePanel from "../left_extra_work/ArchivePanel";
 import CallsPanel from "../left_extra_work/CallsPanel";
 
@@ -560,7 +560,7 @@ function Home() {
 
   return (
     <div
-      className="flex flex-col h-screen overflow-hidden
+      className="flex flex-col h-[100dvh] overflow-hidden
     bg-white text-black
     dark:bg-[#0d0d0d] dark:text-white
     transition-colors duration-300"
@@ -783,11 +783,28 @@ function Home() {
               </div>
             </div>
           )}
+
+           {isMobile && (
+    <button
+      className="p-2 rounded-full hover:scale-105 transition"
+      onClick={() => setLeftMenuOpen(true)}
+    >
+      <MoreVertical size={22} />
+    </button>
+  )}
         </div>
+
+
+
+
+
+
+
+
       </div>
 
       <div className="flex flex-1 overflow-hidden">
-        <div className={` ${isMobile ? "hidden" : "flex-none w-14"}`}>
+        <div className={` ${isMobile ? "hidden" : "flex-none h-full w-14"}`}>
           <LeftNavBar
             onSelectPanel={handleSelectPanel}
             setChatWallpaper={setChatWallpaper}
@@ -812,13 +829,22 @@ function Home() {
 
         <div className="flex flex-1 overflow-hidden ">
           {activePanel === "chats" && showSidebar && (
+            // <div
+            //   className={`flex-none ${
+            //     isMobile
+            //       ? "w-full"
+            //       : "w-[30%] min-w-[300px] max-w-[420px] rounded-2xl shadow-xl"
+            //   } flex flex-col  `}
+            // >
             <div
-              className={`flex-none ${
-                isMobile
-                  ? "w-full"
-                  : "w-[30%] min-w-[300px] max-w-[420px] rounded-2xl shadow-xl"
-              } flex flex-col  `}
-            >
+  className={`
+    flex-none
+    ${isMobile ? "w-full h-full" : "w-[30%] min-w-[300px] max-w-[420px]"}
+    flex flex-col rounded-2xl shadow-xl
+    overflow-hidden   /* 🔥 VERY IMPORTANT */
+  `}
+>
+
               <Sidebar
                 chats={sortedFilteredChats}
                 acceptedMap={acceptedMap}
