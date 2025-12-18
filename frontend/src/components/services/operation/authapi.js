@@ -247,7 +247,8 @@ export const handleAboutUpdate = async (about, token, dispatch) => {
     // console.log("Token inside handleAboutUpdate:", token);
     const response = await apiconnector(
       "PUT",
-      "http://localhost:4001/api/v1/auth/update-about",
+      // "http://localhost:4001/api/v1/auth/update-about",
+      `${process.env.REACT_APP_API_BASE_URL}/auth/update-about`,
       { about },
       {
         Authorization: `Bearer ${token}`,
@@ -271,7 +272,9 @@ export const handleContactUpdate = async (contactnumber, token, dispatch) => {
   try {
     const response = await apiconnector(
       "PUT",
-      "http://localhost:4001/api/v1/auth/update-contact",
+      // "http://localhost:4001/api/v1/auth/update-contact",
+      `${process.env.REACT_APP_API_BASE_URL}/auth/update-contact`,
+
       { contactnumber },
       {
         Authorization: `Bearer ${token}`,

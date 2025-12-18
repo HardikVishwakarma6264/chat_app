@@ -266,7 +266,8 @@ function Home() {
   // socket init
   useEffect(() => {
     // const s = io("http://localhost:4001", { transports: ["websocket"] });
-    const s = io("http://localhost:4001", {
+    // const s = io("http://localhost:4001", {
+    const s = io(process.env.REACT_APP_SOCKET_URL, {
   transports: ["websocket", "polling"],
   withCredentials: true,
 });

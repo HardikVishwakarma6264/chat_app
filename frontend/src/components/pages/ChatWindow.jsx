@@ -359,7 +359,7 @@ const ChatWindow = ({
         fd.append("message", "");
 
         const res = await fetch(
-          `http://localhost:4001/api/v1/mess/send/${receiverId}`,
+          `${process.env.REACT_APP_API_BASE_URL}/mess/send/${receiverId}`,
           {
             method: "POST",
             headers: { Authorization: `Bearer ${token}` },
@@ -427,7 +427,8 @@ const ChatWindow = ({
       const token = JSON.parse(localStorage.getItem("token"));
 
       const res = await fetch(
-        `http://localhost:4001/api/v1/mess/delete-for-me/${messageId}`,
+        // `http://localhost:4001/api/v1/mess/delete-for-me/${messageId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/mess/delete-for-me/${messageId}`,
         {
           method: "POST",
           headers: {
@@ -452,7 +453,8 @@ const ChatWindow = ({
       const token = JSON.parse(localStorage.getItem("token"));
 
       const res = await fetch(
-        `http://localhost:4001/api/v1/mess/star/${messageId}`,
+        // `http://localhost:4001/api/v1/mess/star/${messageId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/mess/star/${messageId}`,
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
@@ -485,7 +487,8 @@ const ChatWindow = ({
       const token = JSON.parse(localStorage.getItem("token"));
 
       const res = await fetch(
-        `http://localhost:4001/api/v1/mess/pin/${msg._id}`,
+        // `http://localhost:4001/api/v1/mess/pin/${msg._id}`,
+        `${process.env.REACT_APP_API_BASE_URL}/mess/pin/${msg._id}`,
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
@@ -614,7 +617,8 @@ const ChatWindow = ({
       const token = JSON.parse(localStorage.getItem("token"));
 
       const res = await fetch(
-        `http://localhost:4001/api/v1/mess/reaction/${messageId}`,
+        // `http://localhost:4001/api/v1/mess/reaction/${messageId}`,
+        `${process.env.REACT_APP_API_BASE_URL}/mess/reaction/${messageId}`,
         {
           method: "POST",
           headers: {
