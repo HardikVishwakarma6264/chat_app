@@ -24,12 +24,12 @@ const Popup = ({
       onClick={() => setShowPopup(false)}
     >
       <div
-        className=" rounded-lg w-96 h-[50vh] shadow-xl border border-white  flex flex-col"
+        className=" rounded-lg w-[310px] md:w-96 md:h-[50vh] h-[60vh] shadow-xl border border-white  flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* HEADER + TABS */}
-        <div className="p-5 pb-2">
-          <h3 className="text-2xl text-white dark:text-white font-semibold  mb-4 text-center">
+        <div className="p-3 pb-2">
+          <h3 className="text-xl md:text-2xl text-white dark:text-white font-semibold  mb-4 text-center">
             Add & Manage Friends
           </h3>
 
@@ -103,7 +103,7 @@ const Popup = ({
 
               {/* FILTERED USERS */}
               {filteredFriends.length === 0 ? (
-                <div className="text-2xl  text-center text-white ">
+                <div className="text-xl md:text-2xl  text-center text-white ">
                   All users are friend
                 </div>
               ) : (
