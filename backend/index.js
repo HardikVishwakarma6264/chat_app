@@ -34,7 +34,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: [
-      "https://chat-app-flax-psi-32.vercel.app",
+      "https://chatapp-flax-psi-32.vercel.app",
       "https://chat-app-git-main-hardik-vishwakarmas-projects.vercel.app",
       "http://localhost:3000"
     ],
