@@ -31,18 +31,41 @@ app.use(cookieParser());
 //   })
 // );
 
+// app.use(
+//   cors({
+//     origin: [
+//       "https://chatapp-flax-psi-32.vercel.app",
+//       "https://chat-app-git-main-hardik-vishwakarmas-projects.vercel.app",
+//       "https://chat.hardikvish.me",
+
+//       "http://localhost:3000"
+//     ],
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
+
+const allowedOrigins = [
+  "https://chatapp-flax-psi-32.vercel.app",
+  "https://chat.hardikvish.me",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: [
-      "https://chatapp-flax-psi-32.vercel.app",
-      "https://chat-app-git-main-hardik-vishwakarmas-projects.vercel.app",
-      "https://chat.hardikvish.me",
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
 
-      "http://localhost:3000"
-    ],
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS not allowed"));
+      }
+    },
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
   })
 );
 
