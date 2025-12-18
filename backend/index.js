@@ -33,7 +33,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://your-frontend-vercel-url.vercel.app" // baad me replace karenge
+   "https://chatapp-flax-psi-32.vercel.app"
 ];
 
 app.use(

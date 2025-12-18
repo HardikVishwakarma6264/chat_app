@@ -15,7 +15,7 @@ function initSocket(server) {
 
   const allowedOrigins = [
   "http://localhost:3000",
-  "https://your-frontend-vercel-url.vercel.app"
+ "https://chatapp-flax-psi-32.vercel.app"
 ];
 
 io = new Server(server, {
