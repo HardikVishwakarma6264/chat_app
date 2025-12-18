@@ -682,7 +682,7 @@ function Home() {
 
       {/* Top Bar */}
       <div
-        className="flex-none w-full h-15 flex items-center justify-between
+        className="flex-none w-full h-12 md:h-15 flex items-center justify-between
     bg-gray-100 text-black
     dark:bg-[#1d1c1c] dark:text-white
     transition-colors duration-300 "
@@ -691,9 +691,9 @@ function Home() {
           <img
             src={loo}
             alt="Samvaad Logo"
-            className="h-[55px] w-[55px] mt-1  logo-glow"
+            className=" h-9 w-9 md:h-[55px] md:w-[55px] mt-1  logo-glow"
           />
-          <span className="text-xl font-semibold">Samvaad</span>
+          <span className="text-lg  md:text-xl font-semibold">Samvaad</span>
         </div>
 
         {/* Bell Notification Button */}
