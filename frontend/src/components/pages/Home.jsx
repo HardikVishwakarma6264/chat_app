@@ -682,16 +682,16 @@ function Home() {
 
       {/* Top Bar */}
       <div
-        className="flex-none w-full h-12 md:h-15 flex items-center justify-between
+        className="flex-none w-full h-11 md:h-16 flex items-center justify-between
     bg-gray-100 text-black
     dark:bg-[#1d1c1c] dark:text-white
     transition-colors duration-300 "
       >
-        <div className="flex items-center gap-1 ">
+        <div className="flex items-center gap-0 ">
           <img
             src={loo}
             alt="Samvaad Logo"
-            className=" h-9 w-9 md:h-[55px] md:w-[55px] mt-1  logo-glow"
+            className=" h-11 w-11 md:h-[55px] md:w-[55px] mt-1  logo-glow"
           />
           <span className="text-lg  md:text-xl font-semibold">Samvaad</span>
         </div>
@@ -700,12 +700,12 @@ function Home() {
 
         <div className="relative" ref={bellRef}>
           <button
-            className="p-2 rounded-full hover:scale-105 hover:font-semibold transition relative"
+            className="p-1 rounded-full hover:scale-105 hover:font-semibold transition relative"
             onClick={() => setShowNotifications((s) => !s)}
           >
             <Bell size={24} className=" mr-2" />
             {friendUnreadCount > 0 && (
-              <span className="absolute -top-1 right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+              <span className="absolute -top-1 right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
                 {friendUnreadCount}
               </span>
             )}
@@ -717,7 +717,7 @@ function Home() {
             <div className="absolute right-0 mt-1 z-50">
               {/* ✅ OUTSIDE DIAMOND — ONLY THIS WILL SHOW */}
               <div
-                className="absolute -top-2 right-6 w-4 h-4 
+                className="absolute -top-2 right-14 md:right-4 w-4 h-4 
                  bg-white dark:bg-black 
                  border-l border-t border-black dark:border-white
                  rotate-45 z-50"
@@ -725,29 +725,29 @@ function Home() {
 
               {/* ✅ POPUP BOX — overflow-hidden so inside diamond is CUT */}
               <div
-                className="w-80 bg-white text-black dark:bg-black dark:text-white 
+                className="w-64 md:w-80 bg-white text-black dark:bg-black dark:text-white 
                     rounded-md shadow-lg overflow-hidden
                     border border-black dark:border-white"
               >
-                <div className="p-3 border-b border-black dark:border-white">
+                <div className="p-1 md:p-3 border-b border-black dark:border-white">
                   <h4 className="font-semibold flex items-center justify-center">
                     Friend Requests
                   </h4>
                 </div>
 
                 {friendIncoming.length === 0 ? (
-                  <div className="p-3 text-sm flex items-center justify-center">
+                  <div className="p-1 md:p-3 text-xs md:text-sm flex items-center justify-center">
                     No requests
                   </div>
                 ) : (
                   friendIncoming.map((req) => (
-                    <div key={req.id} className="flex flex-col p-2 border-b">
+                    <div key={req.id} className="flex flex-col p-1 md:p-2 border-b">
                       <div className="flex items-center">
                         <div className="w-[30%]">
                           <img
                             src={req.image}
                             alt={req.name}
-                            className="w-20 h-20 rounded-full object-cover shadow-2xl cursor-pointer"
+                            className=" h-14 w-15 md:w-20 md:h-20 rounded-full object-cover shadow-2xl cursor-pointer"
                             onClick={() => {
                               setZoom(1);
                               setFullImage(req.image);
@@ -756,11 +756,11 @@ function Home() {
                         </div>
 
                         <div className="flex flex-col w-[70%]">
-                          <div className="font-semibold text-xl ml-6">
+                          <div className="font-semibold text-sm md:text-xl ml-6">
                             {req.name}
                           </div>
 
-                          <div className="flex items-start gap-4 justify-center mt-2">
+                          <div className="flex text-xs md:text-lg items-start gap-4 justify-center mt-2">
                             <button
                               onClick={() => handleRespond(req.id, "accept")}
                               className="px-5 py-1 hover:bg-cyan-400 bg-cyan-500 text-white rounded"

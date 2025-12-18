@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const NavItem = ({ Icon, isSelected, onClick }) => (
   <div
     onClick={onClick}
-    className={`relative flex items-center justify-center h-12 w-12 mx-auto my-3 cursor-pointer transition-all duration-200 ${
+    className={`relative flex items-center justify-center h-8 w-8 md:h-12 md:w-12 mx-auto my-3 cursor-pointer transition-all duration-200 ${
       isSelected
         ? " rounded-lg  shadow-[0_0_15px_#00a884]"
         : " rounded-lg hover:shadow-[0_0_15px_#00a88480]"
@@ -58,7 +58,7 @@ const LeftNavBar = ({
     left-0
     top-0 md:top-auto
     h-[100dvh] md:h-full
-    w-14
+    md:w-14 w-10
     flex flex-col justify-between
     bg-gray-100 dark:bg-[#1d1c1c]
     z-50
@@ -88,7 +88,7 @@ const LeftNavBar = ({
         </div>
 
         {/* 🔹 Bottom Section */}
-        <div className="mb-3 flex flex-col items-center">
+        <div className="mb-2 flex flex-col items-center">
           {/* ⚙️ Settings opens popup → General tab by default */}
           <NavItem
             Icon={Settings}
@@ -108,7 +108,7 @@ const LeftNavBar = ({
               setDefaultTab("Profile"); // 👈 open Profile tab
               setIsProfileOpen(true);
             }}
-            className={`w-10 h-10 rounded-full mx-auto mt-3 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-200  ${
+            className={`w-8 h-8 md:w-10 md:h-10 rounded-full mx-auto mt-3 flex items-center justify-center cursor-pointer overflow-hidden transition-all duration-200  ${
               selected === "profile"
                 ? "  shadow-[0_0_10px_#00a884]"
                 : "  hover:shadow-[0_0_8px_#00a88480]"
