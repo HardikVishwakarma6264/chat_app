@@ -68,9 +68,15 @@ const ChatWindow = ({
   let typingTimeout = null;
 
   const inputRef = useRef(null);
+  // useEffect(() => {
+  //   inputRef.current?.focus();
+  // }, [chat]);
   useEffect(() => {
+  if (!isMobile) {
     inputRef.current?.focus();
-  }, [chat]);
+  }
+}, [chat, isMobile]);
+
 
   const selectedChatId = useSelector((state) => state.chat.selectedChatId);
 

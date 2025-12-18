@@ -20,7 +20,7 @@ const Popup = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+      className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50"
       onClick={() => setShowPopup(false)}
     >
       <div

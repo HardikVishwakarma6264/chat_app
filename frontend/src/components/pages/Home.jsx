@@ -681,6 +681,7 @@ function Home() {
       )}
 
       {/* Top Bar */}
+      {(!isMobile || showSidebar) && (
       <div
         className="flex-none w-full h-11 md:h-16 flex items-center justify-between bg:gray-100
     md:bg-gray-100 text-black dark:bg-black
@@ -802,6 +803,20 @@ function Home() {
 
 
       </div>
+
+      )}
+
+
+
+
+
+
+
+
+
+
+
+
 
       <div className="flex flex-1 overflow-hidden">
         <div className={` ${isMobile ? "hidden" : "flex-none h-full w-14"}`}>
