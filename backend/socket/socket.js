@@ -4,14 +4,29 @@ let io;
 const userSocketMap = {}; // { userId: socketId }
 
 function initSocket(server) {
-  io = new Server(server, {
-    cors: {
-      origin: "http://localhost:3000",
-      methods: ["GET", "POST"],
-      credentials: true,
-    },
-    pingTimeout: 60000,
-  });
+  // io = new Server(server, {
+  //   cors: {
+  //     origin: "http://localhost:3000",
+  //     methods: ["GET", "POST"],
+  //     credentials: true,
+  //   },
+  //   pingTimeout: 60000,
+  // });
+
+  const allowedOrigins = [
+  "http://localhost:3000",
+  "https://your-frontend-vercel-url.vercel.app"
+];
+
+io = new Server(server, {
+  cors: {
+    origin: allowedOrigins,
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+  pingTimeout: 60000,
+});
+
 
   io.on("connection", (socket) => {
     console.log("🟢 Socket connected:", socket.id);
