@@ -31,17 +31,16 @@ app.use(cookieParser());
 //   })
 // );
 
-const allowedOrigins = [
-  "http://localhost:3000",
-  "https://chatapp-flax-psi-32.vercel.app",
-];
-
 app.use(
   cors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: [
+      "https://chat-app-flax-psi-32.vercel.app",
+      "https://chat-app-git-main-hardik-vishwakarmas-projects.vercel.app",
+      "http://localhost:3000"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   })
 );
 
