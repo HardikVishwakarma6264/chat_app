@@ -703,24 +703,25 @@ const ChatWindow = ({
       )}
 
       {profileFullImage && (
-        <div
-          className="fixed inset-0 z-[999] bg-black/80 flex items-center justify-center transition-opacity duration-300 ease-out"
-          onClick={() => setProfileFullImage(null)}
-        >
-          <img
-            src={profileFullImage}
-            alt="Profile"
-            onClick={(e) => e.stopPropagation()}
-            className="
+  <div
+    className="fixed inset-0 z-[999] bg-black/80 flex items-center justify-center"
+    onClick={() => setProfileFullImage(null)}   // bahar click → close
+  >
+    <img
+      src={profileFullImage}
+      alt="Profile"
+      onClick={() => setProfileFullImage(null)} // image click → close
+      className="
         max-w-[90vw] max-h-[90vh]
         rounded-xl shadow-2xl
-        transform scale-90 opacity-0
         animate-profileZoom
-        transition-all duration-300 ease-out
+        transition-all duration-300
+        cursor-pointer
       "
-          />
-        </div>
-      )}
+    />
+  </div>
+)}
+
 
       {/* Header */}
       <div className="flex items-center justify-between  py-1 h-[45px]  md:h-[58px]">
@@ -728,7 +729,7 @@ const ChatWindow = ({
         <div className="flex items-center space-x-1">
           {isMobile && (
             <div
-              className="ml-4 p-1 cursor-pointer text-lg  font-bold hover:bg-gray-700 rounded-lg"
+              className="ml-2 p-1 cursor-pointer text-xl  font-bold hover:bg-gray-700 rounded-lg"
               onClick={() => setShowSidebar(true)}
             >
               ←
@@ -1196,7 +1197,7 @@ const ChatWindow = ({
                         } mt-[-10px] w-[160px] md:w-[220px] bg-[#1c252b] text-white rounded-xl shadow-2xl border border-gray-700 md:p-3 p-1 z-50 animate-fadeIn backdrop-blur-md`}
                       >
                         {/* REACTION ROW */}
-                        <div className="flex items-center md:justify-between justify-around md:px-2  relative w-[145px] md:w-[195px] bg-[#263238] rounded-lg shadow-inner border border-[#334148]">
+                        <div className="flex items-center z-[100] md:justify-between justify-around md:px-2  relative w-[145px] md:w-[195px] bg-[#263238] rounded-lg shadow-inner border border-[#334148]">
                           <div className="flex gap-1 md:gap-2 md:text-xl text-lg">
                             {["👍", "❤️", "😂", "🙏"].map((emoji) => (
                               <span
@@ -1409,11 +1410,18 @@ const ChatWindow = ({
           onClick={closeFullImage}
         >
           <img
+            // src={fullscreenImage}
+            // alt="Full"
+            // onClick={(e) => e.stopPropagation()}
+            // onWheel={zoomWheel}
+            // style={{ transform: `scale(${zoom})` }}
             src={fullscreenImage}
-            alt="Full"
-            onClick={(e) => e.stopPropagation()}
-            onWheel={zoomWheel}
-            style={{ transform: `scale(${zoom})` }}
+  alt="Full"
+  onClick={(e) => {
+    if (zoom === 1) closeFullImage(); // sirf normal zoom pe close
+  }}
+  onWheel={zoomWheel}
+  style={{ transform: `scale(${zoom})` }}
             className="
         max-w-[90%] max-h-[90%]
         rounded-lg shadow-2xl cursor-zoom-in
@@ -1531,7 +1539,7 @@ const ChatWindow = ({
             className=" cursor-pointer hover:scale-110"
           />
           {showEmojiPicker && (
-            <div className="absolute bottom-[73px] left-0 z-50">
+            <div className="absolute bottom-[49px] md:bottom-[73px] left-0 z-50">
               <EmojiPicker
                 onEmojiClick={handleEmojiClick}
                 theme={

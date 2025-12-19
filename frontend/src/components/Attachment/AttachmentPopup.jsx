@@ -37,11 +37,11 @@ const AttachmentPopup = ({ onClose, onSelect }) => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 40, scale: 0.95 }}
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="absolute bottom-[73px] left-14 bg-white dark:bg-black rounded-lg shadow-lg py-2 w-48 z-50 border border-[#2a3942]"
+          className="absolute bottom-[48px] md:bottom-[73px] left-10 md:left-14 bg-white dark:bg-black rounded-lg shadow-lg py-2 w-37 md:w-48 z-50 border border-[#2a3942]"
         >
           <div
             onClick={() => photoInputRef.current.click()}
-            className="flex items-center gap-3 px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer  "
+            className="flex items-center gap-1 md:gap-3 px-2 md:px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer  "
           >
             <Image size={18} className="text-cyan-500" />
             <span className="text-sm">Photos & Videos</span>
@@ -60,7 +60,7 @@ const AttachmentPopup = ({ onClose, onSelect }) => {
             onClick={() => {
               setShowCamera(true);
             }}
-            className="flex items-center gap-3 px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer "
+            className="flex items-center gap-1 md:gap-3 px-2 md:px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer "
           >
             <Camera size={18} className="text-cyan-500" />
             <span className="text-sm">Camera</span>
@@ -68,7 +68,7 @@ const AttachmentPopup = ({ onClose, onSelect }) => {
 
           <div
             onClick={() => docInputRef.current.click()}
-            className="flex items-center gap-3 px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer "
+            className="flex items-center gap-1 md:gap-3 px-2 md:px-4 py-2 hover:bg-gray-500 dark:hover:bg-gray-800 cursor-pointer "
           >
             <FileText size={18} className="text-cyan-500" />
             <span className="text-sm">Document</span>
