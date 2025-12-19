@@ -723,7 +723,8 @@ const ChatWindow = ({
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between  py-1 h-[45px]  md:h-[58px]">
+      <div className="flex items-center md:justify-between  py-1 h-[45px]  md:h-[58px]">
+
         <div className="flex items-center space-x-1">
           {isMobile && (
             <div
@@ -756,7 +757,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        <div className="flex space-x-1 md:space-x-3 ">
+        <div className="flex ml-5 space-x-1  md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
@@ -807,15 +808,18 @@ const ChatWindow = ({
             <Search size={20} />
           </div>
         </div>
+
+
+
       </div>
 
       {showSearchBar && (
-        <div className="absolute top-[117px] right-0 z-[9999]">
+        <div className="absolute top-[45px] md:top-[123px] right-0 z-[9999]">
           {/* OUTER CONTAINER */}
           <div
-            className="flex items-center gap-3  
-      px-4 py-2 rounded-xl shadow-2xl border border-[#2f3b40]
-      w-[340px] backdrop-blur-sm"
+            className="flex items-center gap-2 md:gap-3  
+      md:px-3 px-2 py-1 md:py-2 rounded-xl shadow-2xl border border-[#2f3b40]
+      md:w-[340px] w-[250px] backdrop-blur-sm"
           >
             {/* Search Input */}
             <div className="flex-1">
@@ -825,15 +829,15 @@ const ChatWindow = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-transparent  px-1 py-1 outline-none 
-          placeholder-gray-800 border-b border-gray-800 
+          placeholder-cyan-600 border-b border-gray-800 text-blue-500
           focus:border-cyan-500 transition-all duration-300 rounded-md"
               />
             </div>
 
             {/* Up Arrow */}
             <div
-              className="p-1.5 rounded-md cursor-pointer hover:scale-110 
-        transition  text-sm"
+              className="p-1 rounded-md cursor-pointer hover:scale-110 text-cyan-500 text-bold
+        transition text-xs  md:text-sm"
               onClick={() => {
                 if (searchMatches.length === 0) return;
                 const newIndex =
@@ -848,8 +852,8 @@ const ChatWindow = ({
 
             {/* Down Arrow */}
             <div
-              className="p-1.5 rounded-md cursor-pointer 
-        transition  text-sm"
+              className="p-1 rounded-md cursor-pointer text-bold
+        transition  text-xs  md:text-sm text-cyan-500"
               onClick={() => {
                 if (searchMatches.length === 0) return;
                 const newIndex = (currentMatchIndex + 1) % searchMatches.length;
@@ -862,8 +866,8 @@ const ChatWindow = ({
 
             {/* Close Button */}
             <div
-              className="p-1.5 rounded-md cursor-pointer hover:scale-110
-        transition text-bold"
+              className="p-1 rounded-md cursor-pointer hover:scale-110
+        transition text-bold text-xs text-cyan-500 md:text-sm"
               onClick={() => {
                 setShowSearchBar(false);
                 setSearchQuery("");
