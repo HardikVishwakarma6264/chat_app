@@ -723,11 +723,11 @@ const ChatWindow = ({
       )}
 
       {/* Header */}
-      <div className="flex items-center justify-between  py-3  h-[58px]">
+      <div className="flex items-center justify-between  py-1 h-[45px]  md:h-[58px]">
         <div className="flex items-center space-x-1">
           {isMobile && (
             <div
-              className="mr-1 p-2 cursor-pointer text-xl  font-bold hover:bg-gray-700 rounded-lg"
+              className="ml-4 p-1 cursor-pointer text-lg  font-bold hover:bg-gray-700 rounded-lg"
               onClick={() => setShowSidebar(true)}
             >
               ←
@@ -737,22 +737,26 @@ const ChatWindow = ({
             <img
               src={chat.image}
               alt={chat.name}
-              className="w-12 h-12 rounded-full object-cover cursor-pointer hover:opacity-80"
+              className="h-8 w-8 md:w-12 md:h-12 rounded-full object-cover cursor-pointer hover:opacity-80"
               onClick={() => setProfileFullImage(chat.image)}
             />
           ) : (
             <CircleUser size={40} className="text-gray-400" />
           )}
           <div className="flex flex-col">
-            <p className="font-semibold text-base">{chat.name}</p>
+            {/* <p className="font-semibold text-sm md:text-base">{chat.name}</p> */}
+            <p className="font-semibold text-sm md:text-base max-w-[120px] truncate md:max-w-none md:truncate-none">
+  {chat.name}
+</p>
+
 
             {otherTyping && (
-              <p className="text-cyan-400 text-sm  ">typing...</p>
+              <p className="text-cyan-400 text-xs md:text-sm  ">typing...</p>
             )}
           </div>
         </div>
 
-        <div className="flex space-x-1 ">
+        <div className="flex space-x-1 md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
@@ -797,7 +801,7 @@ const ChatWindow = ({
           </div>
 
           <div
-            className="p-2   cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md rounded-full"
+            className="p-2  cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md rounded-full"
             onClick={() => setShowSearchBar(true)}
           >
             <Search size={20} />
