@@ -723,7 +723,7 @@ const ChatWindow = ({
       )}
 
       {/* Header */}
-      <div className="flex items-center md:justify-between  py-1 h-[45px]  md:h-[58px]">
+      <div className="flex items-center justify-between  py-1 h-[45px]  md:h-[58px]">
 
         <div className="flex items-center space-x-1">
           {isMobile && (
@@ -757,7 +757,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        <div className="flex ml-[3.2rem] space-x-1  md:space-x-3 ">
+        <div className="flex  space-x-1  md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
@@ -1041,8 +1041,8 @@ const ChatWindow = ({
                     }}
                     className={`relative max-w-[70%] px-2 md:px-4 md:py-4 py-1 pr-12 md:pr-[60px] rounded-2xl shadow-md ${
                       msg.senderId === user._id
-                        ? "bg-cyan-800 mr-3 text-white rounded-br-none"
-                        : "bg-[#1f2c33] text-gray-200 ml-2 rounded-bl-none"
+                        ? "bg-cyan-800 mr-1 text-white rounded-br-none"
+                        : "bg-[#1f2c33] text-gray-200 ml-1 rounded-bl-none"
                     }`}
                   >
                     {msg.replyTo && (
@@ -1523,7 +1523,7 @@ const ChatWindow = ({
       )}
 
       {/* INPUT */}
-      <div className="relative flex items-center md:gap-3 gap-2 md:px-5 px-3 md:py-3   ">
+      <div className="relative flex items-center md:gap-3 gap-1 md:px-5 px-3 md:py-3   ">
         <div ref={emojiRef}>
           <Smile
             size={24}
