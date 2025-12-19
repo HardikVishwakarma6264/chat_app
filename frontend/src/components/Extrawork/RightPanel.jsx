@@ -18,21 +18,32 @@ const RightPanel = ({
   isMobile,
 }) => {
   return (
-    <div className="w-[71%] bg-gray-100 dark:bg-black h-full p-2  overflow-hidden dark:border-r dark:border-white border-black md:border-r-0">
-      <div className="flex justify-between items-center mb-1">
+    // <div className="w-[71%] bg-gray-100 dark:bg-black h-full p-2  overflow-hidden dark:border-r dark:border-white border-black md:border-r-0">
+    <div
+  className={`
+    ${isMobile ? "w-[85%]" : "w-[71%]"}
+    bg-gray-100 dark:bg-black
+    h-full md:p-2
+    overflow-hidden
+    dark:border-r dark:border-white
+    border-black md:border-r-0
+  `}
+>
+
+      <div className="flex justify-between items-center">
         {/* Header if any */}
         {isMobile && (
           <button
             onClick={onClose}
-            className=" mb-4 px-2 py-1 text-black dark:text-white rounded-md"
+            className=" px-2 py-1 text-xl ml-2 text-black dark:text-white rounded-md"
           >
-            ← Back
+            ← 
           </button>
         )}
       </div>
 
       {/* Scrollable content with hidden scrollbar */}
-      <div className="h-full overflow-y-scroll scrollbar-hide pr-2">
+      <div className="h-full overflow-y-scroll scrollbar-hide md:pr-4">
         {activeTab === "Profile" && <ProfilePanel />}
         {activeTab === "Account" && <AccountPanel />}
         {activeTab === "Help" && <HelpPanel />}

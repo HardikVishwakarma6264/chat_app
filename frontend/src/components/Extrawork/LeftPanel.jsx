@@ -9,6 +9,7 @@ import {
   HardDrive,
   Keyboard,
   Info,
+  X,
 } from "lucide-react";
 
 const menuItems = [
@@ -27,23 +28,41 @@ const menuItems = [
   { id: "Help", label: "Help", icon: <Info size={18} /> },
 ];
 
-const LeftPanel = ({ activeTab, setActiveTab, isMobile, onThemeChange }) => {
+const LeftPanel = ({ activeTab, setActiveTab, isMobile, onClose }) => {
   return (
     <div
-      className={`${isMobile ? "w-[190px]" : "w-[33%]"}
+      className={`${isMobile ? "w-[180px]" : "w-[33%]"}
       flex flex-col justify-between h-full border-r border-black dark:border-white md:border-r-0
       
       bg-gray-100 text-black 
       dark:bg-black dark:text-white 
       transition-colors duration-300`}
     >
+
+{/* 🔴 MOBILE CLOSE BUTTON */}
+{isMobile && (
+  <div className="flex justify-end px-1 ">
+    <button
+      onClick={onClose}
+      className="
+        p-1 rounded-full
+        hover:bg-gray-300 dark:hover:bg-gray-700
+        transition
+      "
+    >
+      <X size={22} />
+    </button>
+  </div>
+)}
+
+
       {/* Top Section */}
-      <div className="flex flex-col mt-3 space-y-[3px]">
+      <div className="flex flex-col  md:mt-3 md:space-y-[5px]">
         {menuItems.map((item) => (
           <button
             key={item.id}
             onClick={() => setActiveTab(item.id)}
-            className={`group relative flex items-center gap-3 px-5 py-2.5 text-[15px] rounded-md font-medium tracking-wide transition-all duration-300
+            className={`group relative flex items-center gap-3 px-5  py-2.5 text-[15px] rounded-md font-medium tracking-wide transition-all duration-300
               ${
                 activeTab === item.id
                   ? "bg-[#291f1f] dark:bg-gray-700 text-white "
@@ -73,7 +92,7 @@ const LeftPanel = ({ activeTab, setActiveTab, isMobile, onThemeChange }) => {
       </div>
 
       {/* Bottom Profile Button */}
-      <div className="p-4  ">
+      <div className="md:p-4  ">
         <button
           onClick={() => setActiveTab("Profile")}
           className={`group relative flex items-center gap-3 px-5 py-2.5 w-full rounded-md text-[15px] font-medium tracking-wide transition-all duration-300

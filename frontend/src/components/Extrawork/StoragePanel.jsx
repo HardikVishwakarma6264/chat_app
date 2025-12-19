@@ -33,7 +33,7 @@ const StorageSettings = () => {
 
   return (
     <div className=" text-black dark:text-white w-[320px] p-3 rounded-lg  font-sans">
-      <h2 className="text-2xl font-semibold mb-5">Storage</h2>
+      <h2 className="text-xl md:text-2xl font-semibold mb-5">Storage</h2>
       <p className="text-xl  mb-6 leading-5">
         Automatic downloads <br />
       </p>

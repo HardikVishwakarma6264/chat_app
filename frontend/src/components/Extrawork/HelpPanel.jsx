@@ -4,9 +4,9 @@ const HelpPanel = () => {
   const email = "samvaad.help@gmail.com";
 
   return (
-    <div className="flex flex-col text-black dark:text-white items-start justify-start w-full h-full px-5 py-1 overflow-y-auto">
+    <div className="flex flex-col text-black dark:text-white items-start justify-start w-full h-full md:px-5 px-2 py-1 overflow-y-auto">
       {/* Header */}
-      <h2 className="text-2xl font-semibold mb-6">Help</h2>
+      <h2 className="md:text-2xl text-xl font-semibold mb-6">Help</h2>
 
       {/* Version Info */}
       <div className="mb-8">

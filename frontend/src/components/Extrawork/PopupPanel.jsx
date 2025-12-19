@@ -70,7 +70,8 @@ const PopupPanel = ({
     fixed bottom-0 left-0 right-0 z-[9999]  text-white shadow-xl
     ${
       isMobile
-        ? "h-[55vh] w-full rounded-t-2xl"
+        // ? "h-[55vh] w-full rounded-t-2xl"
+        ? "h-[69dvh] w-full rounded-t-2xl overflow-hidden"
         : "h-[650px] w-[600px] rounded-t-2xl"
     }
   `}
@@ -82,6 +83,7 @@ const PopupPanel = ({
                   activeTab={activeTab}
                   setActiveTab={setActiveTab}
                   isMobile={isMobile}
+                   onClose={onClose}
                 />
               ) : (
                 <RightPanel

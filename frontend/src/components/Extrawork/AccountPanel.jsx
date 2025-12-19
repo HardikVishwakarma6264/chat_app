@@ -72,7 +72,7 @@ const WhatsAppPrivacySecurity = () => {
       )}
 
       {/* Scrollable area */}
-      <div className="w-full max-w-md h-full overflow-y-scroll scrollbar-hide p-6 space-y-6">
+      <div className="w-full max-w-md h-full overflow-y-scroll scrollbar-hide p-3 md:p-6 space-y-6  mb-8 md:mb-0">
         {/* Account Section */}
         <div>
           <h1 className="text-2xl font-semibold mb-4">Account</h1>

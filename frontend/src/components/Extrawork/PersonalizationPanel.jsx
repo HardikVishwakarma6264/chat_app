@@ -64,11 +64,11 @@ const PersonalizationPanel = ({ onWallpaperChange, onThemeChange }) => {
   }, [selectedTheme]);
 
   return (
-    <div className="p-3 text-black dark:text-white rounded-lg">
-      <h2 className="text-2xl font-semibold mb-8">Personalization</h2>
+    <div className="p-2 md:p-3 text-black dark:text-white rounded-lg md:mb-0 mb-10">
+      <h2 className="text-xl md:text-2xl font-semibold md:mb-8 mb-4">Personalization</h2>
 
       {/* Theme Section */}
-      <div className="mb-6" ref={dropdownRef}>
+      <div className="mb-3 md:mb-6" ref={dropdownRef}>
         <p className="text-base mb-1"> Color theme</p>
         <div className="relative w-[50%]">
           <button
@@ -120,7 +120,7 @@ const PersonalizationPanel = ({ onWallpaperChange, onThemeChange }) => {
       </div>
 
       {/* Chat Wallpaper */}
-      <div className="mt-6">
+      <div className="mt-3 md:mt-6">
         <p className="text-xl mt-12 mb-2">Chat wallpaper</p>
         <div className="grid grid-cols-4 gap-2 mt-8">
           {chatWallpapers.map((color) => (

@@ -3,10 +3,10 @@ import { Smartphone } from "lucide-react";
 
 const ChatsSettings = () => {
   return (
-    <div className="w-[400px] text-black dark:text-white rounded-xl shadow-lg p-6 space-y-5">
+    <div className="w-[400px] text-black dark:text-white rounded-xl shadow-lg p-2 md:p-6 space-y-5">
       {/* Header */}
       <div>
-        <h2 className="text-2xl font-semibold">Chats</h2>
+        <h2 className="text-xl md:text-2xl font-semibold">Chats</h2>
       </div>
 
       {/* Chat History */}

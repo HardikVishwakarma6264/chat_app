@@ -90,8 +90,8 @@ const Video_voicePanel = () => {
   }, [selectedCamera]);
 
   return (
-    <div className="p-4 text-black dark:text-white space-y-6">
-      <h2 className="text-2xl font-semibold mb-2">Video & Voice</h2>
+    <div className="p-2 md:p-4 text-black dark:text-white space-y-6 md:mb-0 mb-8">
+      <h2 className="text-xl md:text-2xl font-semibold mb-2">Video & Voice</h2>
 
       {/* 🎥 Video Section */}
       <div>

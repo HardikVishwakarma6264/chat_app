@@ -72,7 +72,7 @@ const ProfilePanel = () => {
 
   // ------------------- COMPONENT UI -------------------
   return (
-    <div className="flex flex-col items-center w-full h-full px-10 py-8 text-black dark:text-white overflow-hidden">
+    <div className="flex flex-col items-center w-full h-full px-2 md:px-10 md:py-8  text-black dark:text-white overflow-y-auto scrollbar-hide md:mb-0 mb-8">
       {/* Profile Image */}
       <div className="relative">
         <img
@@ -115,7 +115,7 @@ const ProfilePanel = () => {
       )}
 
       {/* Username Section */}
-      <div className="flex flex-col items-center mt-6 w-full max-w-sm">
+      <div className="flex flex-col items-center mt-4 md:mt-6 w-full max-w-sm">
         <div className="flex justify-between items-center w-full mb-1">
           <h3 className="text-sm ">Username</h3>
           <Pencil
@@ -176,7 +176,7 @@ const ProfilePanel = () => {
       </div>
 
       {/* About Section */}
-      <div className="mt-8 w-full max-w-sm">
+      <div className="mt-4 md:mt-8 w-full max-w-sm">
         <div className="flex justify-between items-center mb-1">
           <h3 className="text-sm">About</h3>
           <Pencil
@@ -226,7 +226,7 @@ const ProfilePanel = () => {
       </div>
 
       {/* Phone Section */}
-      <div className="mt-8 w-full max-w-sm">
+      <div className="mt-4 md:mt-8 w-full max-w-sm">
         <div className="flex justify-between items-center mb-1">
           <h3 className="text-sm ">Phone number</h3>
           <Pencil
@@ -279,7 +279,7 @@ const ProfilePanel = () => {
       </div>
 
       {/* Logout Section */}
-      <hr className="w-full max-w-sm border-[#2e2e2e] my-8" />
+      <hr className="w-full max-w-sm border-[#2e2e2e] my-4 md:my-8" />
       <div className="w-full max-w-sm flex justify-start">
         <button
           onClick={() => logoutUser(navigate)}
@@ -290,7 +290,7 @@ const ProfilePanel = () => {
       </div>
 
       <p className="text-[12px]  mt-3 text-center leading-5 max-w-sm">
-        Chat history on this computer will be cleared when you log out.
+        Chat history will be cleared when you log out.
       </p>
     </div>
   );

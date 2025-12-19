@@ -13,11 +13,11 @@ const SettingsPanel = () => {
   };
 
   return (
-    <div className="  flex justify-center py-5 px-4 h-full overflow-hidden">
-      <div className="w-[400px] space-y-8 overflow-y-auto no-scrollbar h-full">
+    <div className="  flex justify-center md:py-5 md:px-4 px-2 h-full overflow-hidden">
+      <div className="w-[400px] space-y-8 overflow-y-auto no-scrollbar h-full ">
         {/* General Section */}
         <div>
-          <h2 className="text-2xl font-semibold mb-3 dark:text-white text-black ">
+          <h2 className="text-xl md:text-2xl font-semibold md:mb-3 mb-1 dark:text-white text-black ">
             General
           </h2>
 
@@ -43,7 +43,7 @@ const SettingsPanel = () => {
           </div>
 
           {/* Language Dropdown */}
-          <div className="mt-5 relative">
+          <div className="mt-2 md:mt-5 relative">
             <p className="dark:text-white text-black  text-base mb-2">
               Language
             </p>
@@ -78,7 +78,7 @@ const SettingsPanel = () => {
           </div>
 
           {/* Typing */}
-          <div className="mt-7">
+          <div className="mt-4 md:mt-7">
             <p className="dark:text-white text-black text-base font-medium">
               Typing
             </p>
@@ -89,7 +89,7 @@ const SettingsPanel = () => {
           </div>
 
           {/* Replace with emoji */}
-          <div className="mt-8 flex items-center justify-between">
+          <div className="mt-4 md:mt-8 flex items-center justify-between">
             <div>
               <p className="dark:text-white text-black text-base font-medium">
                 Replace text with emoji
@@ -118,7 +118,7 @@ const SettingsPanel = () => {
           </div>
 
           {/* Footer */}
-          <div className="border-t border-[#333] mt-6 pt-4">
+          <div className="border-t border-[#333] mt-1 md:mt-6 pt-4">
             <p className="dark:text-white text-black text-xs">
               To log out of Samvaad on this computer go to your{" "}
               <a className="text-cyan-500 hover:underline">Profile</a>.

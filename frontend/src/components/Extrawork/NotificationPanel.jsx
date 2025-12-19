@@ -43,8 +43,8 @@ const NotificationSettings = () => {
   );
 
   return (
-    <div className="  text-black dark:text-white rounded-xl  p-6 space-y-2">
-      <p className="font-semibold text-2xl">Notification</p>
+    <div className="  text-black dark:text-white rounded-xl p-2  md:p-6 space-y-2 mb-8 md:mb-0">
+      <p className="font-semibold text-xl md:text-2xl">Notification</p>
       {renderToggle("Messages", null, "messages")}
       {renderToggle("Calls", null, "calls")}
 

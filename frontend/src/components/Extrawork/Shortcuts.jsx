@@ -26,9 +26,9 @@ const shortcuts = [
 
 const Shortcuts = () => {
   return (
-    <div className="flex flex-col text-black dark:text-white items-start justify-start w-full h-full px-5 py-4  overflow-y-auto scrollbar-hide">
+    <div className="flex flex-col text-black dark:text-white items-start justify-start w-full h-full md:px-5 px-2 md:py-4 py-2  overflow-y-auto scrollbar-hide">
       {/* Header */}
-      <h2 className="text-2xl font-semibold mb-6">Shortcuts</h2>
+      <h2 className="text-xl md:text-2xl font-semibold md:mb-6 mb-3">Shortcuts</h2>
 
       {/* Subheader */}
       <p className="text-base  mb-6">Keyboard shortcuts</p>
