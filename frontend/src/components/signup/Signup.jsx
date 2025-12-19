@@ -128,7 +128,7 @@ const CustomInput = ({
   toggleShow,
 }) => (
   <div className="relative w-full">
-    <label className="block mb-2 text-xl  text-gray-200">
+    <label className="block mb-2 md:text-xl text-lg  text-gray-200">
       {label} {required && <span className="text-red-400">*</span>}
     </label>
 
@@ -332,7 +332,7 @@ const App = () => {
         clearNotification={clearNotification}
       />
 
-      <div className="min-h-screen flex justify-center items-center text-white p-4 font-['Inter'] bg-black">
+      <div className="min-h-screen flex justify-center items-center text-white md:p-4 font-['Inter'] bg-black">
         {showSplash && (
           <div className="fixed inset-0 flex justify-center items-center bg-black z-50">
             <div
@@ -361,18 +361,18 @@ const App = () => {
 
         <div className="flex flex-col md:flex-row bg-black rounded-2xl shadow-2xl shadow-black/50 w-full max-w-5xl overflow-hidden min-h-[600px] border border-gray-900 backdrop-blur-sm animate-popupEntry">
           {/* Left Section (Branding) */}
-          <div className="p-10 md:w-1/2 flex flex-col justify-center relative bg-[black]">
+          <div className="md:p-10 md:w-1/2 flex flex-col justify-center relative bg-[black]">
             <div className="absolute inset-0 opacity-10 bg-grid-white/[0.1] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]"></div>
 
             <div className="relative z-10 text-center">
-              <div className="my-4 flex justify-center">
+              <div className="md:my-4 flex justify-center">
                 <img
                   src={loo}
                   alt="Sanvaad Logo"
-                  className="w-60 h-68 logo-glow"
+                  className="md:w-60 md:h-68 h-30 w-32 logo-glow"
                 />
               </div>
-              <p className="text-gray-200 text-xl mb-3 font-light">
+              <p className="text-gray-200 md:text-xl text-lg md:mb-3 mb-1 font-light">
                 Your gateway to <b>secure, instant, and private</b>{" "}
                 conversations.
               </p>
@@ -384,13 +384,13 @@ const App = () => {
           </div>
 
           {/* Right Section (Form) */}
-          <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center bg-[black] shadow-inner">
-            <h3 className="text-3xl font-semibold mb-8 text-center text-gray-100">
+          <div className="p-4 md:p-12 md:w-1/2 flex flex-col justify-center bg-[black] shadow-inner">
+            <h3 className="md:text-3xl text-2xl font-semibold md:mb-8 mb-4 text-center text-gray-100">
               Create Account
             </h3>
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="flex flex-col sm:flex-row gap-4">
+            <form className="md:space-y-6 space-y-3" onSubmit={handleSubmit}>
+              <div className="flex flex-col sm:flex-row md:gap-4 gap-2">
                 <CustomInput
                   label="First Name"
                   name="firstname"
@@ -425,7 +425,7 @@ const App = () => {
                 icon={MailIcon}
               />
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row md:gap-4 gap-2">
                 <CustomInput
                   label="Password"
                   name="password"
@@ -462,7 +462,7 @@ const App = () => {
               </button>
             </form>
 
-            <div className="flex items-center my-8">
+            <div className="flex items-center md:my-8 my-4">
               <hr className="flex-grow border-gray-700" />
               <span className="px-3 text-gray-500 text-sm font-medium">
                 ALREADY REGISTERED?

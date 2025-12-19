@@ -68,13 +68,13 @@ const CustomInput = ({
   placeholder,
   icon: Icon,
 }) => (
-  <div className="relative w-full mb-6">
-    <label className="block mb-2 text-xl  text-gray-200">
+  <div className="relative w-full md:mb-6 mb-2">
+    <label className="block mb-2 md:text-xl text-lg  text-gray-200">
       {label} <span className="text-red-400">*</span>
     </label>
     <div className="relative flex items-center border-b-2 border-gray-400 focus-within:border-cyan-400 transition-all duration-300 rounded-t-md">
       {Icon && (
-        <div className="p-3 text-gray-300">
+        <div className="md:p-3 p-1 text-gray-300">
           <Icon size={20} />
         </div>
       )}
@@ -84,7 +84,7 @@ const CustomInput = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full p-3 bg-transparent text-white placeholder-gray-400 focus:outline-none"
+        className="w-full md:p-3 p-2 bg-transparent text-white placeholder-gray-400 focus:outline-none"
         required
       />
     </div>
@@ -178,7 +178,7 @@ const Login = () => {
         }
       `}</style>
 
-      <div className="min-h-screen flex justify-center items-center text-white p-4 font-['Inter'] bg-black">
+      <div className="min-h-screen  flex justify-center items-center text-white p-4 font-['Inter'] bg-black ">
         {showSplash && (
           <div className="fixed inset-0 flex justify-center items-center bg-black z-50">
             <div
@@ -207,45 +207,56 @@ const Login = () => {
 
         <div
           className={`flex flex-col md:flex-row bg-[black] rounded-2xl shadow-2xl shadow-black/50 
-  w-full max-w-5xl overflow-hidden min-h-[720px] border border-gray-900 backdrop-blur-sm 
-  animate-popupEntry transition-opacity duration-700
+  w-full max-w-5xl overflow-hidden md:min-h-[720px] border border-gray-900 backdrop-blur-sm 
+  animate-popupEntry transition-opacity duration-700 
   ${showSplash ? "opacity-0" : "opacity-100"}`}
         >
           {/* LEFT SIDE */}
-          <div className="p-10 md:w-1/2 flex flex-col justify-center relative overflow-hidden bg-[black]">
+          <div className="md:p-10 md:w-1/2 flex flex-col justify-center relative overflow-hidden bg-[black] ">
             <div className="relative z-10 text-center">
-              <div className="my-4 flex justify-center">
+              <div className="md:my-4 flex justify-center">
                 <img
                   src={loo}
                   alt="Sanvaad Logo"
-                  className="w-60 h-68 logo-glow"
+                  className="md:w-60 md:h-68 h-30 w-32 logo-glow"
                 />
               </div>
 
-              <p className="text-gray-200 text-2xl mb-3 font-light">
+              <p className="text-gray-200 md:text-2xl text-xl mb-3 font-light">
                 Welcome back to your{" "}
                 <strong className="text-cyan-400">secure chat</strong> space.
               </p>
-              <p className="text-gray-400 italic font-light text-lg">
+              <p className="text-gray-400 italic font-light text-base md:text-lg">
                 Continue your{" "}
                 <strong className="text-cyan-400">digital dialogue</strong>.
               </p>
             </div>
           </div>
 
+
+
+
+
+
+
+
+
+
+
+
           {/* RIGHT SIDE */}
           <div
-            className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center relative bg-black "
+            className="p-4 md:p-12 md:w-1/2 flex flex-col justify-center relative bg-black "
             style={{
               backgroundImage:
                 "radial-gradient(circle at 50% 50%, rgba(30,30,30,0.1) 0%, transparent 80%)",
             }}
           >
-            <h3 className="text-3xl font-medium mb-8 text-center text-gray-100">
+            <h3 className="md:text-3xl text-2xl font-medium mb-8 text-center text-gray-100">
               Login to Samvaad
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="md:space-y-6 space-y-3">
               <CustomInput
                 label="Email Address"
                 name="email"
@@ -268,13 +279,13 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="w-full bg-cyan-500 text-gray-900 font-bold tracking-wide py-3 rounded-xl hover:bg-cyan-400 transition duration-300 mt-8 text-lg shadow-lg shadow-cyan-500/30"
+                className="w-full bg-cyan-500 text-gray-900 font-bold tracking-wide py-3 rounded-xl hover:bg-cyan-400 transition duration-300 md:mt-8 mt-4 text-lg shadow-lg shadow-cyan-500/30"
               >
                 Start Chatting
               </button>
             </form>
 
-            <div className="flex items-center my-8">
+            <div className="flex items-center my-4 md:my-8">
               <hr className="flex-grow border-gray-700" />
               <span className="px-3 text-gray-500 text-sm font-medium">
                 NOT REGISTERED?
