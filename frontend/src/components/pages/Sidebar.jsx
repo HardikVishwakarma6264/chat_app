@@ -470,8 +470,10 @@ const Sidebar = ({
         )}
       </div>
 
+{/* yaha pe overscroll-none lagana h thik */}
+
       {/* Chat List */}
-      <div className="overflow-y-auto flex-1 overscroll-none ">
+      <div className="overflow-y-auto flex-1  ">
         {filteredChats.length > 0 ? (
           filteredChats.map((c) => {
             const isMatch =

@@ -757,7 +757,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        <div className="flex ml-5 space-x-1  md:space-x-3 ">
+        <div className="flex ml-10 space-x-1  md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
