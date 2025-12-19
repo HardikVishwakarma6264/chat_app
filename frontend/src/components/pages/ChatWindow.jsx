@@ -757,7 +757,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        <div className="flex ml-12 space-x-1  md:space-x-3 ">
+        <div className="flex ml-[3.2rem] space-x-1  md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
@@ -1041,7 +1041,7 @@ const ChatWindow = ({
                     }}
                     className={`relative max-w-[70%] px-2 md:px-4 md:py-4 py-1 pr-12 md:pr-[60px] rounded-2xl shadow-md ${
                       msg.senderId === user._id
-                        ? "bg-cyan-800 mr-2 text-white rounded-br-none"
+                        ? "bg-cyan-800 mr-3 text-white rounded-br-none"
                         : "bg-[#1f2c33] text-gray-200 ml-2 rounded-bl-none"
                     }`}
                   >
@@ -1091,7 +1091,7 @@ const ChatWindow = ({
                           <img
                             src={msg.mediaUrl}
                             alt="img"
-                            className="rounded-lg max-h-56 mb-2 cursor-pointer opacity-100"
+                            className="rounded-lg max-h-56 mb-1 cursor-pointer opacity-100"
                             onClick={() => setFullscreenImage(msg.mediaUrl)}
                           />
 
@@ -1191,13 +1191,13 @@ const ChatWindow = ({
                         onClick={(e) => e.stopPropagation()}
                         className={`absolute top-12 ${
                           msg.senderId === user._id
-                            ? "left-0 ml-[-170px]"
-                            : "right-0 mr-[-170px]"
-                        } mt-[-10px] w-[220px] bg-[#1c252b] text-white rounded-xl shadow-2xl border border-gray-700 p-3 z-50 animate-fadeIn backdrop-blur-md`}
+                            ? "left-0 ml-[-140px] md:ml-[-170px]"
+                            : "right-0 mr-[-90px] md:mr-[-170px]"
+                        } mt-[-10px] w-[160px] md:w-[220px] bg-[#1c252b] text-white rounded-xl shadow-2xl border border-gray-700 md:p-3 p-1 z-50 animate-fadeIn backdrop-blur-md`}
                       >
                         {/* REACTION ROW */}
-                        <div className="flex items-center justify-between px-2 py-1 relative w-[195px] bg-[#263238] rounded-lg shadow-inner border border-[#334148]">
-                          <div className="flex gap-2 text-xl">
+                        <div className="flex items-center md:justify-between justify-around md:px-2  relative w-[145px] md:w-[195px] bg-[#263238] rounded-lg shadow-inner border border-[#334148]">
+                          <div className="flex gap-1 md:gap-2 md:text-xl text-lg">
                             {["👍", "❤️", "😂", "🙏"].map((emoji) => (
                               <span
                                 key={emoji}
@@ -1218,7 +1218,7 @@ const ChatWindow = ({
                           </div>
 
                           <span
-                            className="text-2xl cursor-pointer select-none flex items-center justify-center w-8 h-8 rounded-full bg-gray-700 border border-gray-600 hover:bg-gray-600 hover:text-cyan-400 hover:shadow-lg transition-all duration-200"
+                            className="text-xl md:text-2xl cursor-pointer select-none flex items-center justify-center h-6 w-6 md:w-8 md:h-8 rounded-full bg-gray-700 border border-gray-600 hover:bg-gray-600 hover:text-cyan-400 hover:shadow-lg transition-all duration-200"
                             onClick={(e) => {
                               e.stopPropagation();
                               setShowReactionEmojiPicker((p) => !p);
@@ -1230,7 +1230,7 @@ const ChatWindow = ({
                           {showReactionEmojiPicker && (
                             <div
                               ref={reactionEmojiRef}
-                              className="absolute top-12 -right-[70px] z-[99999] bg-[#1f1f1f] rounded-xl shadow-2xl border border-gray-700"
+                              className="absolute top-12 right-[70px] md:-right-[70px] z-[99999] w-[180px]  md:w-[330px] bg-[#1f1f1f] rounded-xl shadow-2xl border border-gray-700"
                               onClick={(e) => e.stopPropagation()}
                             >
                               <EmojiPicker
@@ -1256,10 +1256,10 @@ const ChatWindow = ({
                           )}
                         </div>
 
-                        <hr className="border-gray-700 my-3" />
+                        <hr className="border-gray-700 my-1 md:my-3" />
 
                         <p
-                          className="py-2 px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
+                          className="md:py-2 py-1 px-1 md:px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
                           onClick={() => {
                             setReplyData({
                               id: msg._id,
@@ -1284,7 +1284,7 @@ const ChatWindow = ({
                         </p>
 
                         <p
-                          className="py-2 px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1 animate-fadeIn"
+                          className="md:py-2 py-1 px-1 md:px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1 animate-fadeIn"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleCopy(msg);
@@ -1295,7 +1295,7 @@ const ChatWindow = ({
                         </p>
 
                         <p
-                          className="py-2 px-3 hover:bg-[#2e3a3f] hover:text-yellow-300 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
+                          className="md:py-2 py-1 px-1 md:px-3 hover:bg-[#2e3a3f] hover:text-yellow-300 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleStar(
@@ -1312,7 +1312,7 @@ const ChatWindow = ({
 
                         {(!msg.pinned || msg.pinnedBy === user._id) && (
                           <p
-                            className="py-2 px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
+                            className="md:py-2 py-1 px-1 md:px-3 hover:bg-[#2e3a3f] hover:text-cyan-400 rounded-lg cursor-pointer transition-all bg-gray-800 mb-1"
                             onClick={(e) => {
                               e.stopPropagation();
                               handlePin(msg);
@@ -1326,7 +1326,7 @@ const ChatWindow = ({
                         {/* ⭐ If message is NOT pinned → show simple Pin */}
 
                         <p
-                          className="py-2 px-3 text-red-400 hover:bg-[#2e3a3f] hover:text-red-300 rounded-lg cursor-pointer transition-all bg-gray-800"
+                          className="md:py-2 py-1 px-1 md:px-3 text-red-400 hover:bg-[#2e3a3f] hover:text-red-300 rounded-lg cursor-pointer transition-all bg-gray-800"
                           onClick={(e) => {
                             e.stopPropagation();
                             handleDeleteForMe(msg._id);
@@ -1339,7 +1339,7 @@ const ChatWindow = ({
                     )}
 
                     {msg.reaction?.emoji && (
-                      <div className="absolute -bottom-5 right-3 bg-gray-700 text-white px-2 py-0.5 rounded-full text-sm border border-gray-500 shadow-md">
+                      <div className="absolute -bottom-6 md:-bottom-5 md:right-3 right-1 bg-gray-700 text-white px-2 py-0.5 rounded-full text-sm border border-gray-500 shadow-md z-50">
                         {msg.reaction.emoji}
                       </div>
                     )}
@@ -1371,7 +1371,7 @@ const ChatWindow = ({
                     )}
 
                     {msg.senderId === user._id && (
-                      <div className="absolute bottom-5 right-2 flex items-center gap-1 text-xs">
+                      <div className="absolute bottom-2 md:bottom-5 right-2 flex items-center gap-1 text-xs">
                         {/* ✔✔ READ → BLUE */}
                         {msg.read ? (
                           <span className="text-blue-500 font-bold">✔✔</span>
@@ -1385,7 +1385,7 @@ const ChatWindow = ({
                       </div>
                     )}
 
-                    <div className="absolute bottom-1 right-1 text-[10px] text-gray-400 whitespace-nowrap">
+                    <div className="absolute bottom-0 md:bottom-1 right-1 text-[8px] md:text-[10px] text-gray-300 whitespace-nowrap">
                       {new Date(msg.createdAt).toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -1523,7 +1523,7 @@ const ChatWindow = ({
       )}
 
       {/* INPUT */}
-      <div className="relative flex items-center gap-3 px-5 py-3  ">
+      <div className="relative flex items-center md:gap-3 gap-2 md:px-5 px-3 md:py-3   ">
         <div ref={emojiRef}>
           <Smile
             size={24}
