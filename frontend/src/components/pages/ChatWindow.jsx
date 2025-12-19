@@ -757,7 +757,7 @@ const ChatWindow = ({
           </div>
         </div>
 
-        <div className="flex ml-10 space-x-1  md:space-x-3 ">
+        <div className="flex ml-12 space-x-1  md:space-x-3 ">
           <div
             className="p-2  rounded-full cursor-pointer  hover:scale-110 transition-all duration-200 shadow-md"
             onClick={() => {
@@ -885,11 +885,11 @@ const ChatWindow = ({
         .map((pinnedMsg) => (
           <div
             key={pinnedMsg._id}
-            className={`border rounded-xl px-4 py-3 mb-1 shadow-lg flex items-center gap-3 transition 
-      ${showPinDropdown === pinnedMsg._id ? "bg-[#143d36]" : "bg-[#1f2a33]"} 
+            className={`border rounded-xl px-4 py-0 md:py-3 mb-0 shadow-lg flex items-center gap-2 transition 
+      ${showPinDropdown === pinnedMsg._id ? "bg-[#131b1a]" : "bg-[#0f0f10]"} 
       border-gray-600`}
           >
-            <span className="text-yellow-300 text-xl">📌</span>
+            <span className="text-yellow-300 text-lg md:text-xl">📌</span>
 
             <div className="flex-1">
               <p className="text-white text-base truncate max-w-[240px]">
@@ -911,9 +911,9 @@ const ChatWindow = ({
                 </div>
 
                 {showPinDropdown === pinnedMsg._id && (
-                  <div className="absolute right-0 mt-1 bg-[#1c252b] border border-gray-700 rounded-md shadow-xl w-24 z-[9999]">
+                  <div className="absolute right-0 mt-1 md:mt-3 bg-[#1c252b] border border-gray-700 rounded-md shadow-xl w-15 md:w-24 z-[9999]">
                     <p
-                      className="px-3 py-2 text-red-300 hover:bg-[#2e3a3f] rounded-md cursor-pointer"
+                      className="md:px-3 md:py-2 px-1  text-red-300 hover:bg-[#2e3a3f] rounded-md cursor-pointer"
                       onClick={() => {
                         handlePin(pinnedMsg);
                         setShowPinDropdown(null);
@@ -951,8 +951,8 @@ const ChatWindow = ({
               <React.Fragment key={msg._id}>
                 {/* 🔥 DATE SEPARATOR */}
                 {showDate && (
-                  <div className="flex justify-center my-3">
-                    <span className="bg-[#243034] text-gray-300 px-3 py-1 rounded-full text-sm">
+                  <div className="flex justify-center ">
+                    <span className="bg-[#243034] text-gray-300 px-3 py-1 rounded-full text-xs md:text-sm">
                       {formatDateSeparator(msg.createdAt)}
                     </span>
                   </div>
@@ -962,7 +962,7 @@ const ChatWindow = ({
 
                 <div
                   ref={(el) => (messageRefs.current[msg._id] = el)}
-                  className={`flex mb-5 ${
+                  className={`flex mb-1 md:mb-4 ${
                     msg.senderId === user._id ? "justify-end" : "justify-start"
                   }`}
                   onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
@@ -1039,15 +1039,15 @@ const ChatWindow = ({
 
                       setHoverPopup(null);
                     }}
-                    className={`relative max-w-[70%] px-4 py-4 pr-[60px] rounded-2xl shadow-md ${
+                    className={`relative max-w-[70%] px-2 md:px-4 md:py-4 py-1 pr-12 md:pr-[60px] rounded-2xl shadow-md ${
                       msg.senderId === user._id
-                        ? "bg-cyan-800 text-white rounded-br-none"
-                        : "bg-[#1f2c33] text-gray-200 rounded-bl-none"
+                        ? "bg-cyan-800 mr-2 text-white rounded-br-none"
+                        : "bg-[#1f2c33] text-gray-200 ml-2 rounded-bl-none"
                     }`}
                   >
                     {msg.replyTo && (
                       <div
-                        className="mb-2 p-2 rounded-lg bg-black/20 border-l-4 border-cyan-500 cursor-pointer"
+                        className="mb-1 p-2 rounded-lg bg-black/50 border-l-4 border-cyan-500 cursor-pointer"
                         onClick={() => {
                           const id = msg.replyTo?._id;
                           if (id && messageRefs.current[id]) {
