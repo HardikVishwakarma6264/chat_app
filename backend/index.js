@@ -50,6 +50,7 @@ const allowedOrigins = [
   "https://chatapp-flax-psi-32.vercel.app",
   "https://chat.hardikvish.me",
   "http://localhost:3000",
+   "https://www.chat.hardikvish.me",
 ];
 
 app.use(
