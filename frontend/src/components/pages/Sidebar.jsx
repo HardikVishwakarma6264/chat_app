@@ -16,7 +16,7 @@ import { setOutgoingStatus } from "../slices/friendSlice";
 import Popup from "./Popup";
 import { resetUnread } from "../slices/chatSlice";
 
-const ChatListItem = ({ chat, isSelected, onSelect, highlight }) => {
+const ChatListItem = ({ chat, isSelected, onSelect, highlight,onImageClick }) => {
   const formatSidebarTime = (date) => {
     const d = new Date(date);
     const today = new Date();
@@ -41,6 +41,9 @@ const ChatListItem = ({ chat, isSelected, onSelect, highlight }) => {
 
     return d.toLocaleDateString([], { day: "2-digit", month: "short" });
   };
+
+
+
   const renderLastMessage = () => {
     if (!chat.lastMessage)
       return <span className="text-gray-500 text-sm">No messages yet</span>;
@@ -91,7 +94,15 @@ const ChatListItem = ({ chat, isSelected, onSelect, highlight }) => {
   ${highlight ? "bg-cyan-800" : ""}  // <<--- Highlight color
 `}
     >
-      <div className="w-12 h-12 rounded-full overflow-hidden mr-4 flex items-center justify-center">
+      {/* <div className="w-12 h-12 rounded-full overflow-hidden mr-4 flex items-center justify-center"> */}
+      <div
+  className="w-12 h-12 rounded-full overflow-hidden mr-4 flex items-center justify-center"
+  onClick={(e) => {
+    e.stopPropagation();          // 🚫 chat select nahi hoga
+    onImageClick(chat.image);     // ✅ image open hogi
+  }}
+>
+
         {chat.image ? (
           <img
             src={chat.image}
@@ -142,6 +153,8 @@ const Sidebar = ({
   const [showPopup, setShowPopup] = useState(false);
   const [otherUsers, setOtherUsers] = useState([]);
   const [activeTab, setActiveTab] = useState("friends");
+  const [sidebarProfileImage, setSidebarProfileImage] = useState(null);
+
 
   const dispatch = useDispatch();
   const outgoing = useSelector((s) => s.friend.outgoing || {});
@@ -487,6 +500,7 @@ const Sidebar = ({
                 isSelected={c.id === selectedChatId}
                 onSelect={handleSelectChat}
                 highlight={isMatch} // <<--- highlight added
+                onImageClick={(img) => setSidebarProfileImage(img)}
               />
             );
           })
@@ -517,7 +531,52 @@ const Sidebar = ({
           setActiveTab={setActiveTab}
         />
       )}
+
+{sidebarProfileImage && (
+  <div
+    className="fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center"
+    onClick={() => setSidebarProfileImage(null)}   // ✅ background click → close
+  >
+    {/* ❌ CLOSE BUTTON */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation();
+        setSidebarProfileImage(null);
+      }}
+      className="
+        absolute top-4 right-4
+        bg-black/70 hover:bg-black
+        text-white
+        rounded-full
+        p-2
+        z-[10000]
+        transition
+      "
+    >
+      ✕
+    </button>
+
+    {/* IMAGE */}
+    <img
+      src={sidebarProfileImage}
+      alt="Profile"
+      onClick={() => setSidebarProfileImage(null)}  // ✅ image click → close
+      className="
+        max-w-[90vw] max-h-[90vh]
+        rounded-xl shadow-2xl
+        animate-profileZoom
+        transition-all duration-300
+        cursor-pointer
+      "
+    />
+  </div>
+)}
+
+
+
+
     </div>
+    
   );
 };
 

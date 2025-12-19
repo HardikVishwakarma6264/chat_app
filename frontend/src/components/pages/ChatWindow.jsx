@@ -702,15 +702,35 @@ const ChatWindow = ({
         />
       )}
 
-      {profileFullImage && (
+     {profileFullImage && (
   <div
-    className="fixed inset-0 z-[999] bg-black/80 flex items-center justify-center"
-    onClick={() => setProfileFullImage(null)}   // bahar click → close
+    className="fixed inset-0 z-[999] bg-black/90 flex items-center justify-center"
+    onClick={() => setProfileFullImage(null)}   // ✅ background click → close
   >
+    {/* ❌ CLOSE ICON (TOP RIGHT) */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation(); // background click double fire na ho
+        setProfileFullImage(null);
+      }}
+      className="
+        absolute top-4 right-4
+        bg-black/70 hover:bg-black
+        text-white
+        rounded-full
+        p-2
+        z-[1000]
+        transition
+      "
+    >
+      ✕
+    </button>
+
+    {/* PROFILE IMAGE */}
     <img
       src={profileFullImage}
       alt="Profile"
-      onClick={() => setProfileFullImage(null)} // image click → close
+      onClick={() => setProfileFullImage(null)} // ✅ image click → close
       className="
         max-w-[90vw] max-h-[90vh]
         rounded-xl shadow-2xl
@@ -721,6 +741,7 @@ const ChatWindow = ({
     />
   </div>
 )}
+
 
 
       {/* Header */}
@@ -1404,34 +1425,51 @@ const ChatWindow = ({
 
       {/* FULLSCREEN IMAGE MODAL WITH SMOOTH FADE + ZOOM */}
       {fullscreenImage && (
-        <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-[9999]
+  <div
+    className="fixed inset-0 bg-black/90 flex items-center justify-center z-[9999]
                transition-opacity duration-300 ease-out"
-          onClick={closeFullImage}
-        >
-          <img
-            // src={fullscreenImage}
-            // alt="Full"
-            // onClick={(e) => e.stopPropagation()}
-            // onWheel={zoomWheel}
-            // style={{ transform: `scale(${zoom})` }}
-            src={fullscreenImage}
-  alt="Full"
-  onClick={(e) => {
-    if (zoom === 1) closeFullImage(); // sirf normal zoom pe close
-  }}
-  onWheel={zoomWheel}
-  style={{ transform: `scale(${zoom})` }}
-            className="
+    onClick={closeFullImage}   // ✅ background click → close
+  >
+    {/* ❌ CLOSE ICON (TOP RIGHT) */}
+    <button
+      onClick={(e) => {
+        e.stopPropagation(); // background click double na ho
+        closeFullImage();
+      }}
+      className="
+        absolute top-4 right-4
+        bg-black/70 hover:bg-black
+        text-white
+        rounded-full
+        p-2
+        z-[10000]
+        transition
+      "
+    >
+      ✕
+    </button>
+
+    {/* IMAGE */}
+    <img
+      src={fullscreenImage}
+      alt="Full"
+      onClick={(e) => {
+        e.stopPropagation();
+        if (zoom === 1) closeFullImage(); // ✅ same logic preserved
+      }}
+      onWheel={zoomWheel}
+      style={{ transform: `scale(${zoom})` }}
+      className="
         max-w-[90%] max-h-[90%]
         rounded-lg shadow-2xl cursor-zoom-in
         transform scale-90 opacity-0
         animate-profileZoom
         transition-all duration-300 ease-out
       "
-          />
-        </div>
-      )}
+    />
+  </div>
+)}
+
 
       {/* Preview File UI */}
       {selectedFile && (
