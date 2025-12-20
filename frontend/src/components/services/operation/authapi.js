@@ -114,7 +114,7 @@ export function signupuser(
 
 export function loginuser(email, password, navigate) {
   return async (dispatch) => {
-    // const toastId = toast.loading("Logging in...");
+    const toastId = toast.loading("Logging in...");
 
     try {
       const response = await apiconnector("POST", login.LOGINJI, {
@@ -155,7 +155,7 @@ export function loginuser(email, password, navigate) {
         error?.response?.data?.message || error.message || "Login Failed"
       );
     } finally {
-      // toast.dismiss(toastId);
+      toast.dismiss(toastId);
     }
   };
 }
