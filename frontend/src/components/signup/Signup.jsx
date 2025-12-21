@@ -396,7 +396,7 @@ const App = () => {
                   name="firstname"
                   value={formData.firstname}
                   onChange={handleChange}
-                  placeholder="John"
+                  placeholder=""
                   required
                   error={errors.firstname}
                   icon={UserIcon}
@@ -406,7 +406,7 @@ const App = () => {
                   name="lastname"
                   value={formData.lastname}
                   onChange={handleChange}
-                  placeholder="Doe"
+                  placeholder=""
                   required
                   error={errors.lastname}
                   icon={UserIcon}
@@ -419,7 +419,7 @@ const App = () => {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="example@email.com"
+                placeholder=""
                 required
                 error={errors.email}
                 icon={MailIcon}
@@ -431,7 +431,7 @@ const App = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="••••••••"
+                  placeholder=""
                   required
                   error={errors.password}
                   icon={LockIcon}
@@ -444,7 +444,7 @@ const App = () => {
                   name="confirmpassword"
                   value={formData.confirmpassword}
                   onChange={handleChange}
-                  placeholder="••••••••"
+                  placeholder=""
                   required
                   error={errors.confirmpassword}
                   icon={LockIcon}
